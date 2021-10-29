@@ -1,4 +1,0 @@
-﻿# Airpalne Ino 
-Да
-
-
