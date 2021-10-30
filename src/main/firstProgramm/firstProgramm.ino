@@ -1,9 +1,15 @@
+#include <Wire.h>
+#include <Strela.h>
+
+
 void setup() {
-  // put your setup code here, to run once:
+  Serial.begin(9600);
 
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  Serial.print(typeid(S1).name(), S1);
+  for(uint8_t i = S1 + 1; i <= S4; i++) {
+    uDigitalWrite(L1 + (i - S1), uDigitalRead(i));
+  }
 }
