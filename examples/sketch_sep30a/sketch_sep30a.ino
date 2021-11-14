@@ -1,3 +1,5 @@
+#include <Servo.h>
+
 #include <Strela.h>
 #include <Arduino.h>
 #include <Wire.h>
@@ -19,5 +21,3 @@ void loop(){
     delay(10000);
     Speed = 0;
 }
-
-
