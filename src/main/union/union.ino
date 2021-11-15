@@ -86,6 +86,8 @@ void setup() {
   Servo_RudderHeight.attach(P4); // Предположим, что это - рули высоты
 }
 
+// Закинуть все тестовые функции в одну общую и вызывать уже её
+
 void loop() {
 
   leftWingCheckAfortStart();
