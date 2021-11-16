@@ -86,10 +86,9 @@ void setup() {
   Servo_RudderHeight.attach(P4); // Предположим, что это - рули высоты
 }
 
-// Закинуть все тестовые функции в одну общую и вызывать уже её
+// Закинуть все тестовые функции в одну общую и вызывать уже её <complete>
 
-void loop() {
-
+void testFunctionAfortStart() {
   leftWingCheckAfortStart();
   Serial.println("Левое крыло успешно прошло тест! Готово к использованию.");
   rightWingCheckAfortStart();
@@ -100,8 +99,42 @@ void loop() {
   Serial.println("Проверка пройдена.");
   offPropellerCheckAfortStart();
   Serial.println("Пропеллер успешно отключен! Пропеллер готов к использованию.");
+}
 
+// Я не знаю пока что точно как будет работать управление самолётом, поэтому напишу простую функцию на первый раз
+int16_t counterSpeed = 120;
+
+// Чтобы создать массив char, нужно оставить пустым первый элемент(индекс 0)
+
+char arrayOfSimbol[7] = {'F', 'B', 'L', 'R', 't', 'f',};
+
+void trafficControl() {
+  char counterSimbol = Serial.read();
+
+  if (counterSimbol == arrayOfSimbol[0]) { // Нужно проверить что лежит в 0 индексе, потестить
+    drive(counterSpeed, counterSpeed);
+  } else if (counterSimbol == arrayOfSimbol[1]) {
+    drive(-counterSpeed, -counterSpeed);
+  } else if (counterSimbol == arrayOfSimbol[2]) {
+    drive(-counterSpeed, counterSpeed);
+  } else if (counterSimbol == arrayOfSimbol[3]) {
+    drive(counterSpeed, -counterSpeed);
+  } else if (counterSimbol == arrayOfSimbol[4]) {
+    counterSpeed = 0;
+    drive(counterSpeed, counterSpeed);
+  } else if (counterSimbol == arrayOfSimbol[5]){
+    counterSpeed = 120; // Со значением можно поиграться
+    tone(BUZZER, 1000, 50);
+  }
+}
+
+void loop() {
+  testFunctionAfortStart();
   Serial.println("Все проверки пройдены. Самолёт готов к вылету!");
+
+  // if (Serial.available() > 0) {
+  //  trafficControl();
+  // }
   Serial.end();
   while(true) {}
 }
