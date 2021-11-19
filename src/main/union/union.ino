@@ -94,6 +94,14 @@ void rudderRouteUsing(int8_t rectangle) { // Не знаю какое значе
   
 }
 
+void wingsUsing(char isWing, int8_t rectangle) {
+  // Наверно стоит сделать отдельный файл для поворотов
+}
+
+void math() {
+  // Function for counting various expressions in other functions
+}
+
 void setup() {
   motorConnection(0, 1);
   Serial.begin(9600);
@@ -128,6 +136,9 @@ char arrayOfSimbol[7] = {'F', 'B', 'L', 'R', 't', 'f',};
 
 // Управление будет совершенно другое, придётся работатьс с сервоприводами
 
+
+// Если язык довольно быстрый, то проверку на зажатость кнопки можно проверять с помощью кейсов в цикле
+
 void trafficControl() {
   char counterSimbol = Serial.read();
 
@@ -136,6 +147,7 @@ void trafficControl() {
   // Данное отношение пока не понятно
   if(counterSimbol == arrayOfSimbol[99]) { // Выход за границы массива, для примера
     // Нужно повернуть влево
+    // Цикл нужен для плавности
     // for(uint8_t i = 0; i < )
   
   }
