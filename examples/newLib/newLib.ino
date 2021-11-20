@@ -8,6 +8,7 @@ VarSpeedServo ServoL;
 VarSpeedServo ServoR;
 
 void setup() {
+  setlocale)_
   ServoL.attach(P1);
   ServoR.attach(P2); 
   ServoL.write(111, 30);
